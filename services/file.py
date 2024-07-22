@@ -80,6 +80,9 @@ def extract_text_from_file(file: BufferedReader, mimetype: str) -> str:
                         for run in paragraph.runs:
                             extracted_text += run.text + " "
                     extracted_text += "\n"
+    elif mimetype == "application/json":
+        # Extract text from json file
+        extracted_text = file.read().decode("utf-8")
     else:
         # Unsupported file type
         raise ValueError("Unsupported file type: {}".format(mimetype))
